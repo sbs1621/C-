@@ -1,0 +1,104 @@
+#include<iostream>
+#include<string>
+using namespace std;
+
+class Circle{
+	int radius;
+public:
+	Circle(int radius = 0){ this->radius = radius;}
+	int getRedius(){ return radius; }
+	void setRedius(int radius){ 
+		this->radius = radius; }
+	double getArea(){ return 3.14*radius*radius; }
+	
+};
+
+class NamedCircle : public Circle{
+	string name;
+public:
+	NamedCircle(){  }
+	NamedCircle(int radius, string c){
+		setRedius(radius);
+		this->name = c;
+	}
+	string setName(string name){ this->name = name; 
+	return name;
+	}
+	string getName(){ return name; }
+	void show(){ cout << "반지름이" << getRedius() << "인" << name; }
+};
+
+class Point{
+	int x, y;
+public:
+	Point(){}
+	Point(int x, int y){ this->x = x; this->y = y; }
+	int getX(){ return x; }
+	int getY(){ return y; }
+protected:
+	void move(int x, int y){ this->x = x; this->y = y; }
+};
+
+class ColorPoint : public Point{
+	string color;
+public:
+	ColorPoint(int x = 0, int y = 0, string color = "black"){
+		
+		this->move(x, y);
+		
+		this->color = color;
+	}
+	void setpoint(int x, int y){
+		move(x, y);
+	}
+	void setcolor(string name){
+		this->color = name;
+	}
+	void show(){ cout << color << "색으로 (" << getX() << "," << getY() << ")에 위치한 점입니다."; }
+	
+};
+int main(){
+		//1번
+		/*
+		NamedCircle waffle(3, "waffle");
+		waffle.show();*/
+		//2번
+		/*
+		cout << "5개의 정수 반지름과 원의 이름을 입력하세요 " << endl;
+		string name;
+		int r = 0;
+		NamedCircle pizza[5];
+		for (int i = 0; i < 5; i++){
+		cout << i + 1 << ">>";
+		cin >> r;
+		pizza[i].setRedius(r);
+		cin >> name;
+		pizza[i].setName(name);
+		}
+		double a = pizza[0].getArea();
+		int cnt = 0;
+		for (int i = 0; i < 5; i++){
+		if (a < pizza[i].getArea()){
+		a = pizza[i].getArea();
+		cnt = i;
+		}
+		}
+		cout << "면적이 가장 큰 피자는 " << pizza[cnt].getName() << "입니다" << endl;
+		*/
+		//3번
+	/*
+		ColorPoint cp(5, 5, "RED");
+		cp.setpoint(10, 20);
+		cp.setcolor("BLUE");
+		cp.show();
+		*/
+	//4번
+	ColorPoint zeropoint;
+	zeropoint.show();
+	
+	ColorPoint cp(5, 5, "RED");
+	cp.setpoint(10, 20);
+	cp.setcolor("BLUE");
+	cp.show();
+	
+}
